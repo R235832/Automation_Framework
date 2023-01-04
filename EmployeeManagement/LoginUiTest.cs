@@ -1,25 +1,12 @@
+using EmployeeManagement.Base;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace EmployeeManagement
+namespace EmployeeManagement.Base
 {
 
-    public class LoginUiTest
+    public class LoginUiTest : AutomationWrapper
     {
-        IWebDriver driver;
-        [SetUp]
-        public void AfterMethod()
-        {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
-            driver.Url = "https://opensource-demo.orangehrmlive.com/";
-        }
-        [TearDown]
-        public void BeforeMethod()
-        {
-            driver.Quit();
-        }
 
         [Test]
 
