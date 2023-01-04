@@ -27,7 +27,7 @@ namespace EmployeeManagement.Base
         {
             driver.FindElement(By.Name("username")).SendKeys(username);
             driver.FindElement(By.Name("password")).SendKeys(password);
-            driver.FindElement(By.XPath(" //button[normalize-space()=\"Login\"]")).Click();
+            driver.FindElement(By.XPath("//button[normalize-space()='Login']")).Click();
             string actualError = driver.FindElement(By.XPath("//p[normalize-space()='Invalid credentials']")).Text;
             // Assert.That(actualError, Is.EqualTo("Invalid credentials"));
             Assert.That(actualError.Contains(expectedError), "Assertion on error message");
