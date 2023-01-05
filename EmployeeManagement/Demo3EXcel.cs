@@ -15,8 +15,28 @@ namespace EmployeeManagement
             XLWorkbook book = new XLWorkbook(@"C:\\Users\\rakeshro\\Desktop\\C# SESSION\\AutomationFramework\\EmployeeManagement\\TestData\\OrangeHRM_data.xlsx");
             IXLWorksheet sheet = book.Worksheet("InvalidLoginTest");
             IXLRange range = sheet.RangeUsed();
-            string value=range.Cell(1,1).GetString();
-            Console.WriteLine(value);
+
+            for(int r = 2; r <=4;r++)
+            {
+                for(int c=1;c<=3;c++)
+                {
+                    //string[] dataset1 = new string[3];
+                    //dataset1[0] = "john";
+                    //dataset1[1] = "john123";
+                    //dataset1[2] = "Invalid Credential";
+                    string value = range.Cell(r, c).GetString();
+                    Console.WriteLine(value);
+                 
+                }
+
+
+                
+               
+            }
+
+
+
+            
             book.Dispose();
 
         }
