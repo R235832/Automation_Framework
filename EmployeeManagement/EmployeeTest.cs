@@ -25,9 +25,12 @@ namespace EmployeeManagement
             driver.FindElement(By.Name("middleName")).SendKeys(middlename);
             driver.FindElement(By.Name("lastName")).SendKeys(lastname);
             driver.FindElement(By.XPath("//button[@type='submit']")).Click();
-            string realemployeename = driver.FindElement(By.CssSelector("[class='oxd-text oxd-text--h6 --strong']")).Text;
-            realemployeename.ToCharArray();
-            Assert.That(employeename.Contains(realemployeename), "Assert on error message");                                   
+            //string realemployeename = driver.FindElement(By.CssSelector("[class='oxd-text oxd-text--h6 --strong']")).Text;
+            //realemployeename.ToCharArray();
+            string headerlocator = "//h6[contains(normalize-space(),'@@@@@')]";
+            headerlocator = headerlocator.Replace("@@@@@", firstname);
+            string actualEmplName = driver.FindElement(By.XPath(headerlocator)).Text;
+            Assert.That(actualEmplName.Contains(employeename), "Assert on error message");                                   
         }
     }
 }
