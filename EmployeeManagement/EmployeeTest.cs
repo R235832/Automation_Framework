@@ -12,7 +12,7 @@ namespace EmployeeManagement
     
     public class EmployeeTest:AutomationWrapper
     {
-        [Test,TestCaseSource(typeof(DataSource), nameof(DataSource.ValidEmployeeNameTest))]
+        [Test,TestCaseSource(typeof(DataSource), nameof(DataSource.ValidEmployeeNameTest2))]
 
         public void AddValidEmployee(string username,string password,string firstname,string middlename,string lastname,string employeename)
         {

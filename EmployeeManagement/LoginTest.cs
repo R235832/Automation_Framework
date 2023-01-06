@@ -22,7 +22,7 @@ namespace EmployeeManagement.Base
             Assert.That(homePageLink, Is.EqualTo("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index"));
         }
         
-        [Test, TestCaseSource(typeof(DataSource),nameof(DataSource.InvalidLoginData))]
+        [Test, TestCaseSource(typeof(DataSource),nameof(DataSource.InvalidLoginData2))]
 
         //[Test]
         //[TestCase("john","john123", "Invalid credential")]

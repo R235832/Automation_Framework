@@ -58,5 +58,15 @@ namespace EmployeeManagement.Utilities
 
             return allDataSet;
         }
+        public static object[] InvalidLoginData2()
+        {
+            object[] data = ExcelUtils.GetSheetIntoObjectArray(@"C:\Users\rakeshro\Desktop\C# SESSION\AutomationFramework\EmployeeManagement\TestData\OrangeHRM_data.xlsx", "InvalidLoginTest");
+            return data;
+        }
+        public static object[] ValidEmployeeNameTest2()
+        {
+            object[] data = ExcelUtils.GetSheetIntoObjectArray("C:\\Users\\rakeshro\\Desktop\\C# SESSION\\AutomationFramework\\EmployeeManagement\\TestData\\OrangeHRM_data.xlsx", "AddValidEmployee");
+            return data;
+        }
     }
 }

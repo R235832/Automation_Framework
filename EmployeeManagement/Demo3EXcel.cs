@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Bibliography;
+using EmployeeManagement.Base;
+
 namespace EmployeeManagement
 {
 
-    public class Demo3EXcel
+    public class Demo3EXcel: AutomationWrapper
+
     {
         [Test]
         public void DemoExcelRead()
@@ -15,29 +20,31 @@ namespace EmployeeManagement
             XLWorkbook book = new XLWorkbook(@"C:\\Users\\rakeshro\\Desktop\\C# SESSION\\AutomationFramework\\EmployeeManagement\\TestData\\OrangeHRM_data.xlsx");
             IXLWorksheet sheet = book.Worksheet("InvalidLoginTest");
             IXLRange range = sheet.RangeUsed();
+            
 
-            for(int r = 2; r <=4;r++)
+           // object[] alldata = new object[3];
+
+
+            for (int r = 2; r <= 4; r++)
             {
-                for(int c=1;c<=3;c++)
+              //  string[] dataset = new string[3];
+                for (int c = 1; c <= 3; c++)
                 {
-                    //string[] dataset1 = new string[3];
-                    //dataset1[0] = "john";
-                    //dataset1[1] = "john123";
-                    //dataset1[2] = "Invalid Credential";
+                    
                     string value = range.Cell(r, c).GetString();
                     Console.WriteLine(value);
-                 
+                  //  dataset[c - 1] = value;
+
                 }
 
-
-                
-               
+              //  alldata[r - 2] = dataset;
             }
 
+            //return alldata;
 
 
-            
-            book.Dispose();
+
+           // book.Dispose();
 
         }
     }
