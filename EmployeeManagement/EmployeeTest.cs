@@ -1,4 +1,5 @@
 ﻿using EmployeeManagement.Base;
+using EmployeeManagement.Page;
 using EmployeeManagement.Utilities;
 using OpenQA.Selenium;
 using System;
@@ -16,9 +17,14 @@ namespace EmployeeManagement
 
         public void AddValidEmployee(string username,string password,string firstname,string middlename,string lastname,string employeename)
         {
-            driver.FindElement(By.Name("username")).SendKeys(username);
-            driver.FindElement(By.Name("password")).SendKeys(password);
-            driver.FindElement(By.XPath("//button[normalize-space()=\"Login\"]")).Click();
+
+            LoginPage logindetails = new LoginPage(driver);
+            logindetails.EnterUsername(username);
+            logindetails.EnterPassword(password);
+            logindetails.ClickOnLogin();
+            //driver.FindElement(By.Name("username")).SendKeys(username);
+            //driver.FindElement(By.Name("password")).SendKeys(password);
+            //driver.FindElement(By.XPath("//button[normalize-space()=\"Login\"]")).Click();
             driver.FindElement(By.XPath("//a[@href='/web/index.php/pim/viewPimModule']")).Click();
             driver.FindElement(By.XPath("//a[normalize-space()='Add Employee']")).Click();
             driver.FindElement(By.Name("firstName")).SendKeys(firstname);

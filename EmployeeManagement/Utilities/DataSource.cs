@@ -48,14 +48,10 @@ namespace EmployeeManagement.Utilities
             dataSet2[4] = "goodman";
             dataSet2[5] = "saul goodman";
 
-            
-
-
             object[] allDataSet = new object[2];//number of test cases we have
             allDataSet[0] = dataSet1;
             allDataSet[1] = dataSet2;
            
-
             return allDataSet;
         }
         public static object[] InvalidLoginData2()

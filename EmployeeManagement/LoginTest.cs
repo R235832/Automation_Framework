@@ -1,4 +1,6 @@
 ﻿using EmployeeManagement.Base;
+using EmployeeManagement.Page;
+using EmployeeManagement.Pages;
 using EmployeeManagement.Utilities;
 using OpenQA.Selenium;
 using System;
@@ -15,10 +17,18 @@ namespace EmployeeManagement.Base
         [Test]
         public void ValidLoginTest()
         {
-            driver.FindElement(By.Name("username")).SendKeys("Admin");
-            driver.FindElement(By.Name("password")).SendKeys("admin123");
-            driver.FindElement(By.XPath(" //button[normalize-space()=\"Login\"]")).Click();
-            string homePageLink = driver.Url;
+            MainPage urlclick = new MainPage(driver);
+            LoginPage logindetails = new LoginPage(driver);
+            logindetails.EnterUsername("Admin");
+            logindetails.EnterPassword("admin123");
+            logindetails.ClickOnLogin();
+           
+           
+
+            //driver.FindElement(By.Name("username")).SendKeys("Admin");
+            //driver.FindElement(By.Name("password")).SendKeys("admin123");
+           // driver.FindElement(By.XPath(" //button[normalize-space()=\"Login\"]")).Click();
+            string homePageLink = urlclick.GetManePageUrl();
             Assert.That(homePageLink, Is.EqualTo("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index"));
         }
         
@@ -29,10 +39,19 @@ namespace EmployeeManagement.Base
         //[TestCase("peter", "peter123", "Invalid credential")]
         public void InvalidLoginTest(string username,string password,string expectedError)
         {
-            driver.FindElement(By.Name("username")).SendKeys(username);
-            driver.FindElement(By.Name("password")).SendKeys(password);
-            driver.FindElement(By.XPath("//button[normalize-space()='Login']")).Click();
-            string actualError = driver.FindElement(By.XPath("//p[normalize-space()='Invalid credentials']")).Text;
+
+            LoginPage logindetails = new LoginPage(driver);
+            logindetails.EnterUsername(username);
+            logindetails.EnterPassword(password);
+            logindetails.ClickOnLogin();
+          
+            logindetails.GetErrorMessage();
+
+
+            //driver.FindElement(By.Name("username")).SendKeys(username);
+            //driver.FindElement(By.Name("password")).SendKeys(password);
+            //driver.FindElement(By.XPath("//button[normalize-space()='Login']")).Click();
+            string actualError = logindetails.GetErrorMessage();
             // Assert.That(actualError, Is.EqualTo("Invalid credentials"));
             Assert.That(actualError.Contains(expectedError), "Assertion on error message");
                
